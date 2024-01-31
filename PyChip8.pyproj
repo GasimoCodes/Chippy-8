@@ -22,10 +22,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CPU.py" />
+    <Compile Include="Executer.py" />
+    <Compile Include="Input.py" />
     <Compile Include="PyChip8.py" />
+    <Compile Include="Renderer.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="CondaEnv|CondaEnv|PyChipEnv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Roms\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

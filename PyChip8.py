@@ -1,25 +1,36 @@
 import pygame, sys;
 from pygame.locals import *;
 
+import Renderer as Rend;
+import Input;
+import CPU as HW;
 
 
-
-
-pygame.init();
-DISPLAYSURF = pygame.display.set_mode((400, 300));
-pygame.display.set_caption('CHIP-8');
-
+rend : Rend.Renderer = Rend.Renderer();
+keyboard = Input.Keyboard();
+ROM : Input.ROM = Input.ROM("Roms/Test1.ch8");
+CPU : HW.CPU = HW.CPU(rend, keyboard);
 a = 0;
-print(sys.getsizeof(a));
 
-while True: # main game loop
+CPU.LoadSprites();
+CPU.LoadROM(ROM.data);
 
-    a += 1;
-
-    DISPLAYSURF.set_at((a, a), Color(255,255,255))
-
+run = True
+while run:
+    pygame.time.delay(100)
     for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-    pygame.display.update()
+        
+        if event.type == pygame.QUIT:
+            run = False
+
+    rend.setPixel(a, a);
+    rend.redraw();
+    print(a);
+
+        
+pygame.quit()
+
+
+
+
+
