@@ -22,7 +22,7 @@ class CPU(object):
         
         # PC
         self.programCounter = 0x200;
-        self.indexRegister = 0;
+        self.indexRegister = numpy.uint16(0);
         
         # TIMERS
         self.delayTimer = 0;

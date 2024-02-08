@@ -14,7 +14,7 @@ class Executer(object):
         # a monster of a Match().
         # MAY LORD HAVE MERCY ON US.
 
-        print("Executing: " + hex(opcode));
+        #print("Executing: " + hex(opcode));
         self.cpu.programCounter += 2;
 
         # Commonly used OPCODE parts shorthands:
@@ -94,44 +94,52 @@ class Executer(object):
                         # ADD VY TO VX
 
                         # If this doesnt work then numpy did not overflow properly.
-                        result = self.cpu.registers[x] + self.cpu.registers[y];
+                        result = int(self.cpu.registers[x]) + int(self.cpu.registers[y]);
+                        self.cpu.registers[x] = numpy.uint8(result);
                         
                         # Set carry flag
-                        if result > 0xFF:
+                        if result > 255:
                             self.cpu.registers[0xF] = 1;
                         else:
-                            self.cpu.registers[0xF] = 0;
+                            self.cpu.registers[0xF] = 0;    
                         
-                        self.cpu.registers[x] = result;
                         pass;
                     case 0x5:
                         # SUBTRACT VY FROM VX
-                        if self.cpu.registers[x] > self.cpu.registers[y]:
-                            self.cpu.registers[0xF] = 1;
-                        else:
-                            self.cpu.registers[0xF] = 0;
+                        # TODO: FIX
                         
-                        self.cpu.registers[x] -= self.cpu.registers[y];
+                        isNotBorrow = 0;
+                        if numpy.uint8(self.cpu.registers[x]) >= numpy.uint8(self.cpu.registers[y]):
+                            isNotBorrow = 1;
+                        
+                        self.cpu.registers[x] = numpy.uint8(numpy.uint8(self.cpu.registers[x]) - numpy.uint8(self.cpu.registers[y]));
+                        self.cpu.registers[0xF] = isNotBorrow;
+
                         pass;
                     case 0x6:
                         # SHIFT VX RIGHT
-                        self.cpu.registers[0xF] = self.cpu.registers[x] & 0x1;
+                        flag = self.cpu.registers[x] & 0x1;
                         self.cpu.registers[x] >>= 1;
+                        self.cpu.registers[0xF] = flag;
                         pass;
                     case 0x7:
                         # SUBTRACT VX FROM VY
+                        borrow = 0;                        
+
+                        if self.cpu.registers[y] >= self.cpu.registers[x]:
+                            borrow = 1;
                         
-                        if self.cpu.registers[y] > self.cpu.registers[x]:
-                            self.cpu.registers[0xF] = 1;
-                        else:
-                            self.cpu.registers[0xF] = 0;
-    
                         self.cpu.registers[x] = self.cpu.registers[y] - self.cpu.registers[x];
+                        
+                        self.cpu.registers[0xF] = borrow;                        
+                        
                         pass;
                     case 0xE:
                         # SHIFT VX LEFT
-                        self.cpu.registers[0xF] = self.cpu.registers[x] & 0x80;
-                        self.cpu.registers[x] <<= 1;
+                        # TODO: FIX CARRY FLAG if broken
+                        borrow = (self.cpu.registers[x]) >> 7;                        
+                        self.cpu.registers[x] = (self.cpu.registers[x] << 1);
+                        self.cpu.registers[0xF] = borrow;
                         pass;
                 pass
 

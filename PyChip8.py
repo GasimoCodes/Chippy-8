@@ -5,19 +5,18 @@ import Renderer as Rend;
 import Input;
 import CPU as HW;
 
-
+speed = 1;
 rend : Rend.Renderer = Rend.Renderer();
 keyboard = Input.Keyboard();
-ROM : Input.ROM = Input.ROM("Roms/Test1.ch8");
+ROM : Input.ROM = Input.ROM("Roms/key_test.ch8");
 CPU : HW.CPU = HW.CPU(rend, keyboard);
-a = 0;
 
 CPU.LoadSprites();
 CPU.LoadROM(ROM.data);
 
 run = True
 while run:
-    pygame.time.delay(100)
+    pygame.time.delay(speed)
     for event in pygame.event.get():
         
         if event.type == pygame.QUIT:
