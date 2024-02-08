@@ -9,29 +9,29 @@ class Keyboard(object):
 
         # Map pygame keys to chip8 HEX values
         self.keymap = {
-            K_1: 0x1,
-            K_2: 0x2,
-            K_3: 0x3,
-            K_4: 0xC,
-            K_q: 0x4,
-            K_w: 0x5,
-            K_e: 0x6,
-            K_r: 0xD,
-            K_a: 0x7,
-            K_s: 0x8,
-            K_d: 0x9,
-            K_f: 0xE,
-            K_z: 0xA,
-            K_x: 0x0,
-            K_c: 0xB,
-            K_v: 0xF
+            0x1: K_1,
+            0x2: K_2,
+            0x3: K_3,
+            0xC: K_4,
+            0x4: K_q,
+            0x5: K_w,
+            0x6: K_e,
+            0xD: K_r,
+            0x7: K_a,
+            0x8: K_s,
+            0x9: K_d,
+            0xE: K_f,
+            0xA: K_z,
+            0x0: K_x,
+            0xB: K_c,
+            0xF: K_v
         }
         
         pass
     
-    def isKeyDown(self, key: int) -> bool:
+    def isKeyDown(self, key: numpy.uint8) -> bool:
         """Returns true if the key is down"""
-        return pygame.key.get_pressed()[key];
+        return pygame.key.get_pressed()[self.keymap[key]];
 
 
     pass

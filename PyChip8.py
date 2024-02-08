@@ -17,10 +17,11 @@ CPU.LoadROM(ROM.data);
 run = True
 while run:
     pygame.time.delay(speed)
-    for event in pygame.event.get():
-        
+    
+    for event in pygame.event.get():   
         if event.type == pygame.QUIT:
             run = False
+            
 
     CPU.Tick();
 

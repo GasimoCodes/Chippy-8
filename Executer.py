@@ -187,7 +187,7 @@ class Executer(object):
                     case 0x0A:
                         # WAIT FOR KEY PRESS AND LOAD VX
                         # TODO: Implement this
-                        raise Exception("NOT IMPLEMENTED: " + opcode);
+                        raise Exception("NOT IMPLEMENTED");
                         pass;
                     case 0x15:
                         # LOAD DELAY TIMER WITH VX
