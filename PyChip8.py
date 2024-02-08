@@ -23,9 +23,7 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    rend.setPixel(a, a);
-    rend.redraw();
-    print(a);
+    CPU.Tick();
 
         
 pygame.quit()

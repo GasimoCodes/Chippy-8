@@ -1,5 +1,6 @@
 import pygame, sys;
 from pygame.locals import *;
+import numpy;
 
 class Keyboard(object):
     
@@ -51,7 +52,8 @@ class ROM(object):
         with open(self.path, "rb") as f:
             byte = f.read(1);
             while byte:
-                self.data.append(byte);
+                # Convert byte to int and append to data
+                self.data.append(int.from_bytes(byte, byteorder='big', signed=False));
                 byte = f.read(1);
                 pass
             pass

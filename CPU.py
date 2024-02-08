@@ -59,9 +59,12 @@ class CPU(object):
     
     def LoadROM(self, ROM):
         """Loads the ROM into memory"""
+
+        print(ROM);
         
+
         # At 0x200, like lord intended.
-        self.memory[0x200: (0x200 + len(ROM))] = ROM;
+        self.memory[(0x200) : (int(0x200) + len(ROM))] = ROM;
         pass
 
 
