@@ -1,6 +1,9 @@
+from ast import Num
 import Renderer as Rend;
 import Input;
 import Executer;
+import numpy;
+
 class CPU(object):
 
     def __init__(self, renderer : Rend.Renderer, keyboard : Input.Keyboard):
@@ -9,9 +12,9 @@ class CPU(object):
         self.keyboard = keyboard;
         self.executer = Executer.Executer(self);
         
-        # MEM (in bytes)
-        self.memory = [0] * 4096;
-        self.registers = [0] * 16;
+        # MEM (in bytes) using numpy uint8 array
+        self.memory = numpy.zeros(4096, dtype=numpy.uint8);
+        self.registers = numpy.zeros(16, dtype=numpy.uint8);
         
         # STACC
         self.stack = [0] * 16;
@@ -64,7 +67,8 @@ class CPU(object):
 
     def Tick(self):
         """Executes a single cycle"""
-        
+        # To-do: Implement a way to control how many instructions are executed/tick.
+
         # Fetch opcode. Each instruction is 2 bytes long. Shift the first byte left by 8 bits, 
         # then OR it with the second byte and voila.
         opcode = (self.memory[self.programCounter] << 8) | self.memory[self.programCounter + 1];
