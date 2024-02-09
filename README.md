@@ -1,6 +1,8 @@
 # Chippy-8
 Chippy-8 is a simple CHIP-8 emulator written in Python. It implements instructions based on the [1997 Cogwood's Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM) specification and uses [PyGame](https://www.pygame.org/docs/) to handle both rendering (binding to SDL) and Keyboard Input. This project was created as a assignment for my programming course at [Matfyz Charles University](https://www.mff.cuni.cz/en) and is not intended for production.
 
+[Wiki](https://github.com/GasimoCodes/Chippy-8/wiki) 
+
 ![2024-02-0918-06-31-ezgif com-video-to-gif-converter](https://github.com/GasimoCodes/Chippy-8/assets/22917863/667d38bb-e925-42dc-846b-3a5824ebb2f9)
 ![2024-02-0918-11-32-ezgif com-video-to-gif-converter(1)](https://github.com/GasimoCodes/Chippy-8/assets/22917863/30404a55-ccfb-42a6-93de-ea13f2cb38fd)
 ![2024-02-0918-14-38-ezgif com-video-to-gif-converter](https://github.com/GasimoCodes/Chippy-8/assets/22917863/bf8260a0-1271-49cc-8dbb-ee09dc7ff701)
