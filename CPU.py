@@ -1,10 +1,12 @@
-from ast import Num
 import Renderer as Rend;
 import Input;
 import Executer;
 import numpy;
 
 class CPU(object):
+    """Represents the Chip8 CPU"""
+    
+    debug = False;
 
     def __init__(self, renderer : Rend.Renderer, keyboard : Input.Keyboard):
         # EXT
@@ -32,7 +34,7 @@ class CPU(object):
 
 
     def LoadSprites(self):
-        """Loads the 'sprite font' into memory"""
+        """Loads the 'sprite font' into memory 0x0000-0x0080"""
         
         # Praised be Cowgod.
         self.sprites = [
@@ -58,10 +60,7 @@ class CPU(object):
         self.memory[0:80] = self.sprites;
     
     def LoadROM(self, ROM):
-        """Loads the ROM into memory"""
-
-        print(ROM);
-        
+        """Loads the entire ROM into memory starting at 0x200"""
 
         # At 0x200, like lord intended.
         self.memory[(0x200) : (int(0x200) + len(ROM))] = ROM;
@@ -69,14 +68,17 @@ class CPU(object):
 
 
     def Tick(self):
-        """Executes a single cycle"""
-        # To-do: Implement a way to control how many instructions are executed/tick.
+        """Executes a single CPU cycle"""
+        # To-do: Implement a way to control how many instructions are executed/tick?
 
         # Fetch opcode. Each instruction is 2 bytes long. Shift the first byte left by 8 bits, 
         # then OR it with the second byte and voila.
         opcode = (self.memory[self.programCounter] << 8) | self.memory[self.programCounter + 1];
-
-                
+        
+        if(self.debug):
+            print("PC: " + hex(self.programCounter) + " Opcode: " + hex(opcode));
+        
+        # Execute and update timers
         self.executer.Execute(opcode);
         self.updateTimers();
         self.renderer.redraw();

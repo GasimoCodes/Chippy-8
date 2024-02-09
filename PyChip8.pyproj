@@ -27,6 +27,7 @@
     <Compile Include="Input.py" />
     <Compile Include="PyChip8.py" />
     <Compile Include="Renderer.py" />
+    <Compile Include="Settings.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="CondaEnv|CondaEnv|PyChipEnv" />

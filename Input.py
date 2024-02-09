@@ -3,7 +3,7 @@ from pygame.locals import *;
 import numpy;
 
 class Keyboard(object):
-    
+    """Represents the Chip8 keyboard. Handles mapping."""
     
     def __init__(self):
 

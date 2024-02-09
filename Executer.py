@@ -2,19 +2,19 @@ import numpy;
 import random;
 
 class Executer(object):
+    """Executes chip8 opcodes"""
 
     def __init__(self, cpu):
         self.cpu = cpu;
         pass
 
     def Execute(self, opcode):
-        """Executes an opcode"""
+        """Executes the given opcode and increases PC"""
         
         # Only way to do this in an performant and readable way in python is 
         # a monster of a Match().
         # MAY LORD HAVE MERCY ON US.
-
-        #print("Executing: " + hex(opcode));
+        
         self.cpu.programCounter += 2;
 
         # Commonly used OPCODE parts shorthands:

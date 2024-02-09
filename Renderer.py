@@ -2,11 +2,12 @@ import pygame, sys;
 from pygame.locals import *;
 
 class Renderer:
-
+    """Handles rendering pixels on the screen the CHIP-8 way"""
     
-    def __init__(self):
-        self.sw, self.sh = 64, 32
-        self.scaling_factor = 20
+    def __init__(self, sw, sh, scaling):
+        """Initializes the renderer with a given resolution and scaling factor"""
+        self.sw, self.sh = sw, sh
+        self.scaling_factor = scaling
         pygame.init()
 
         self.black = Color(0, 0, 0)
@@ -23,7 +24,7 @@ class Renderer:
 
     def redraw(self):
         """Redraws the screen by resizing from the chip8 buffer"""
-        
+        # Setting lower or higher scaling causes slowdowns, seems like a pygame issue. TODO: Investigate
         self.win.blit(pygame.transform.scale(self.screen, self.win.get_rect().size), (0, 0))
         pygame.display.update();
     
@@ -33,17 +34,14 @@ class Renderer:
         self.screen.fill(self.black);
         pass
 
-
     
     def setPixel(self, x: int, y: int) -> bool:
         """XOR's an pixel at a given x,y position. Returns true if a pixel got 'erased'."""        
 
-        
         # WRAP X VALUE AROUND IF IT GOES OUT OF BOUNDS
         x = x % self.sw;
         y = y % self.sh;
                 
-
         if self.screen.get_at((x, y)) == self.white:
             self.screen.set_at((x, y), self.black);
             return True;
@@ -51,7 +49,6 @@ class Renderer:
         self.screen.set_at((x, y), self.white);    
         return False;
     
-
 pass
 
 
