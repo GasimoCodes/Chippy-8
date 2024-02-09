@@ -38,17 +38,12 @@ class Renderer:
     def setPixel(self, x: int, y: int) -> bool:
         """XOR's an pixel at a given x,y position. Returns true if a pixel got 'erased'."""        
 
-        if (x > self.sw):
-            x -= self.sw;
-        elif (x < 0):
-            x += self.sw;
+        
+        # WRAP X VALUE AROUND IF IT GOES OUT OF BOUNDS
+        x = x % self.sw;
+        y = y % self.sh;
+                
 
-
-        if (y > self.sh):
-            y -= self.sh;
-        elif (y < 0):
-            y += self.sh;
-    
         if self.screen.get_at((x, y)) == self.white:
             self.screen.set_at((x, y), self.black);
             return True;
