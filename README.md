@@ -1,5 +1,5 @@
 # Chippy-8
-Chippy-8 is a simple CHIP-8 emulator written in Python. It implements instructions based on the [1997 Cogwood's Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM) specification and uses [PyGame](https://www.pygame.org/docs/) to handle both rendering (binding to SDL) and Keyboard Input. This project was created as a assignment for my programming course at [Matfyz Charles University](https://www.mff.cuni.cz/en) and is not intended for production.
+Chippy-8 is a simple CHIP-8 emulator written in Python. It implements instructions based on the [1997 Cogwood's Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM) specification and uses [PyGame](https://www.pygame.org/docs/) to handle both rendering (binding to SDL) and Keyboard Input. This project was created as an assignment for my programming course at [Matfyz Charles University](https://www.mff.cuni.cz/en) and is not intended for production.
 
 #### [Wiki](https://github.com/GasimoCodes/Chippy-8/wiki) 
 
