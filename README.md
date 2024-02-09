@@ -12,7 +12,8 @@ Chippy-8 is a simple CHIP-8 emulator written in Python. It implements instructio
 ### Installation
 
 1. Clone the repository: `git clone https://github.com/GasimoCodes/Chippy-8.git`
-2. Download dependencies using: `pip install numpy` or `conda install numpy`
+2. Install numpy using: `pip install numpy` or `conda install numpy`
+3. Install pygame using: `pip install pygame` or `conda install conda-forge::pygame`
 
 ### Emulating
 1. Run `PyChip8.py` to run the emulation. It will also generate an config.json file (if not already present).
